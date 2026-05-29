@@ -31,6 +31,9 @@ import { RenderLogService } from '../../services/render-log.service';
           <div style="color:var(--text-dim)">{{ formValue() }}</div>
         </div>
       </form>
+      <div class="timer-hint">
+        <code>valueChanges</code> (Observable) → <code>formValue.set()</code> → signal → CD déclenché. Avec Zone.js, chaque frappe déclencherait déjà CD automatiquement même sans signal.
+      </div>
     </div>
   `,
 })

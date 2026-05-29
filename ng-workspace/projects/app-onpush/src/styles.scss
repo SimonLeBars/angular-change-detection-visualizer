@@ -502,7 +502,7 @@ header {
   line-height: 2;
 }
 
-app-counter, app-list, app-form, app-toggle, app-timer, app-log-panel {
+app-counter, app-list, app-form, app-toggle, app-timer, app-log-panel, app-list-item {
   display: contents;
 }
 
@@ -514,7 +514,9 @@ app-counter, app-list, app-form, app-toggle, app-timer, app-log-panel {
 .timer-display { display: flex; align-items: baseline; gap: 6px; padding: 4px 14px; background: var(--surface2); border-radius: 4px; border: 1px solid var(--border); min-width: 90px; }
 .timer-value { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .timer-unit { font-size: 0.65rem; color: var(--text-muted); }
-.timer-hint { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; margin-top: 6px; padding: 5px 10px; background: var(--surface2); border-left: 2px solid var(--border); border-radius: 0 4px 4px 0; }
+.timer-hint { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; margin-top: 8px; padding: 7px 12px; background: var(--surface2); border-left: 3px solid var(--border-bright); border-radius: 0 4px 4px 0; }
+.timer-hint code { color: var(--text); background: var(--surface); padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+.timer-hint strong { color: var(--text); }
 .timer-hint.is-warning { border-left-color: var(--red); color: var(--text); }
 .timer-hint.is-ok { border-left-color: var(--green); color: var(--green); }
 .timer-divider { border: none; border-top: 1px solid var(--border); margin: 10px 0; }

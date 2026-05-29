@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { RenderFlashDirective } from '../../directives/render-flash.directive';
 import { RenderLogService } from '../../services/render-log.service';
+import { ListItemComp } from './list-item';
 
 export interface ListItem {
   id: number;
@@ -9,32 +10,18 @@ export interface ListItem {
 
 @Component({
   selector: 'app-list',
-  imports: [RenderFlashDirective],
+  imports: [RenderFlashDirective, ListItemComp],
   template: `
     <div class="component-card-body dom-node"
          appRenderFlash="ListComponent · wrapper">
       <ul class="item-list">
         @if (useTrackBy()) {
           @for (item of items(); track item.id) {
-            <li class="dom-node"
-                [appRenderFlash]="'ListItem #' + item.id + ' (trackBy: id)'"
-                [flashOnInit]="true">
-              <span>
-                <span class="item-index">[{{ $index }}]</span>{{ item.label }}
-              </span>
-              <button class="item-delete" (click)="delete(item.id)">✕</button>
-            </li>
+            <app-list-item [item]="item" [trackById]="true" (deleted)="delete($event)" />
           }
         } @else {
           @for (item of items(); track $index) {
-            <li class="dom-node"
-                [appRenderFlash]="'ListItem #' + item.id + ' (trackBy: index)'"
-                [flashOnInit]="true">
-              <span>
-                <span class="item-index">[{{ $index }}]</span>{{ item.label }}
-              </span>
-              <button class="item-delete" (click)="delete(item.id)">✕</button>
-            </li>
+            <app-list-item [item]="item" [trackById]="false" (deleted)="delete($event)" />
           }
         }
       </ul>
@@ -44,6 +31,9 @@ export interface ListItem {
         <button class="btn" [class.active]="useTrackBy()" (click)="toggleTrackBy()">
           trackBy: {{ useTrackBy() ? 'id ✓' : 'index ✗' }}
         </button>
+      </div>
+      <div class="timer-hint">
+        <code>ListItemComp</code> utilise <code>OnPush</code>. <strong>track id</strong> → instance réutilisée, même référence d'input → pas de flash. <strong>track $index</strong> → input change à chaque position → flash.
       </div>
     </div>
   `,
@@ -80,8 +70,8 @@ export class List {
       return copy;
     });
     const mode = this.useTrackBy()
-      ? 'trackBy: id → seuls les items déplacés re-rendent'
-      : 'trackBy: index → TOUS les items re-rendent';
+      ? 'trackBy: id → wrapper seul re-checké, items OnPush protégés'
+      : 'trackBy: $index → items reçoivent de nouveaux inputs → re-render';
     this.log.addEntry({ component: 'ListComponent', action: 'shuffle()', type: 'render', detail: mode });
   }
 

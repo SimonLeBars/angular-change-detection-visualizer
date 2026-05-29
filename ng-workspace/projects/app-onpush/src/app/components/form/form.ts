@@ -32,6 +32,9 @@ import { RenderLogService } from '../../services/render-log.service';
           <div style="color:var(--text-dim)">{{ formValue() }}</div>
         </div>
       </form>
+      <div class="timer-hint">
+        <code>valueChanges</code> (Observable) → <code>formValue.set()</code> → signal → Angular déclenche CD. Sans le signal, OnPush ne saurait pas mettre à jour la vue.
+      </div>
     </div>
   `,
 })

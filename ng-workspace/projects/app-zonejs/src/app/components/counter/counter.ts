@@ -20,6 +20,9 @@ import { RenderLogService } from '../../services/render-log.service';
           reset
         </button>
       </div>
+      <div class="timer-hint">
+        <code>count.update()</code> → signal modifié → Zone.js déclenche un CD global → Default CD vérifie toute l'arborescence → tous les composants flashent.
+      </div>
     </div>
   `,
 })

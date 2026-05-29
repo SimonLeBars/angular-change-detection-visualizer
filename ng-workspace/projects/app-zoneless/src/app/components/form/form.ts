@@ -31,6 +31,9 @@ import { RenderLogService } from '../../services/render-log.service';
           <div style="color:var(--text-dim)">{{ formValue() }}</div>
         </div>
       </form>
+      <div class="timer-hint">
+        <code>valueChanges</code> (Observable) → <code>formValue.set()</code> → signal → Angular déclenche CD sans Zone.js ni <code>markForCheck()</code>.
+      </div>
     </div>
   `,
 })

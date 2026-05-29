@@ -45,6 +45,9 @@ import { RenderLogService } from '../../services/render-log.service';
         }
 
       </div>
+      <div class="timer-hint">
+        <code>&#64;if</code> détruit et recrée réellement le nœud DOM — pas un <code>display:none</code>. Flash « DOM insert » à l'insertion, nœud absent du DOM à la suppression.
+      </div>
     </div>
   `,
 })

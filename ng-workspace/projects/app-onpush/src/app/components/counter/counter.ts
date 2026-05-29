@@ -21,6 +21,9 @@ import { RenderLogService } from '../../services/render-log.service';
           reset
         </button>
       </div>
+      <div class="timer-hint">
+        <code>count.update()</code> → signal modifié → Angular cible uniquement les vues qui consomment ce signal (OnPush) → les autres composants ne flashent pas.
+      </div>
     </div>
   `,
 })
