@@ -503,6 +503,21 @@ header {
   line-height: 2;
 }
 
-app-counter, app-list, app-form, app-toggle, app-log-panel {
+app-counter, app-list, app-form, app-toggle, app-timer, app-log-panel {
   display: contents;
 }
+
+// ─── Timer ───────────────────────────────────────────────────────────────────
+.timer-section { padding: 10px 0; }
+.timer-section + .timer-section { border-top: 1px solid var(--border); margin-top: 4px; }
+.timer-section-title { font-size: 0.72rem; color: var(--text-muted); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
+.timer-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+.timer-display { display: flex; align-items: baseline; gap: 6px; padding: 4px 14px; background: var(--surface2); border-radius: 4px; border: 1px solid var(--border); min-width: 90px; }
+.timer-value { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.timer-unit { font-size: 0.65rem; color: var(--text-muted); }
+.timer-hint { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; margin-top: 6px; padding: 5px 10px; background: var(--surface2); border-left: 2px solid var(--border); border-radius: 0 4px 4px 0; }
+.timer-hint.is-warning { border-left-color: var(--red); color: var(--text); }
+.timer-hint.is-ok { border-left-color: var(--green); color: var(--green); }
+.timer-divider { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+.timer-modes { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 8px; }
+.timer-modes .btn { font-size: 0.68rem; padding: 2px 10px; }

@@ -5,11 +5,12 @@ import { Counter } from './components/counter/counter';
 import { List } from './components/list/list';
 import { Form } from './components/form/form';
 import { Toggle } from './components/toggle/toggle';
+import { Timer } from './components/timer/timer';
 import { LogPanel } from './components/log-panel/log-panel';
 
 @Component({
   selector: 'app-root',
-  imports: [Counter, List, Form, Toggle, LogPanel],
+  imports: [Counter, List, Form, Toggle, Timer, LogPanel],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
