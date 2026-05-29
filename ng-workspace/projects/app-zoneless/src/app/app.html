@@ -1,0 +1,106 @@
+<header>
+  <div class="logo">DOM<span>Flash</span></div>
+  <div class="header-badge">Zoneless · Default CD</div>
+  <div class="live-indicator">
+    <div class="live-dot"></div>
+    Change detection active
+  </div>
+  <div id="render-counter-header">
+    Renders : <b>{{ log.total() }}</b>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- EXPLAINER -->
+  <div class="explainer">
+    <div class="explainer-text">
+      <strong style="color:var(--orange)">Zoneless + Default CD</strong> —
+      Sans Zone.js, le CD se déclenche <strong>uniquement</strong> au changement d'un signal.
+      Mais avec <code style="color:var(--orange)">ChangeDetectionStrategy.Default</code>,
+      toute l'arborescence est quand même vérifiée — tous les composants flashent.
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch swatch-red"></div>
+      <span>Nœud re-rendu</span>
+    </div>
+    <div class="explainer-arrow">→</div>
+    <div class="legend-item">
+      <div class="legend-swatch swatch-white"></div>
+      <span>Retour normal</span>
+    </div>
+  </div>
+
+  <!-- DEMO AREA -->
+  <div class="demo-area">
+
+    <div class="controls-bar">
+      <label>
+        Durée de l'animation :
+        <select class="duration-select" (change)="setDuration($event)">
+          <option value="500">0.5s (rapide)</option>
+          <option value="1000" selected>1s (normal)</option>
+          <option value="2000">2s (lent)</option>
+          <option value="5000">5s (très lent)</option>
+        </select>
+      </label>
+      <label style="margin-left:auto;">
+        <input type="checkbox" (change)="setHighlight($event)"
+               style="accent-color:var(--orange)">
+        Surligner les parents aussi
+      </label>
+    </div>
+
+    <!-- Counter -->
+    <div>
+      <div class="section-label">&lt;app-counter&gt;</div>
+      <div class="component-card">
+        <div class="component-card-header">
+          <span class="component-tag">&lt;app-counter&gt;</span>
+          <span style="color:var(--text-muted)">— CounterComponent · ChangeDetectionStrategy.Default</span>
+        </div>
+        <app-counter />
+      </div>
+    </div>
+
+    <!-- List -->
+    <div>
+      <div class="section-label">&lt;app-list&gt; · &#64;for + trackBy demo</div>
+      <div class="component-card">
+        <div class="component-card-header">
+          <span class="component-tag">&lt;app-list&gt;</span>
+          <span style="color:var(--text-muted)">— &#64;for directive · toggle trackBy pour voir la différence</span>
+        </div>
+        <app-list />
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div>
+      <div class="section-label">&lt;app-form&gt; · ReactiveFormsModule</div>
+      <div class="component-card">
+        <div class="component-card-header">
+          <span class="component-tag">&lt;app-form&gt;</span>
+          <span style="color:var(--text-muted)">— ReactiveFormsModule · valueChanges → signal</span>
+        </div>
+        <app-form />
+      </div>
+    </div>
+
+    <!-- Toggle -->
+    <div>
+      <div class="section-label">&lt;app-toggle&gt; · &#64;if</div>
+      <div class="component-card">
+        <div class="component-card-header">
+          <span class="component-tag">&lt;app-toggle&gt;</span>
+          <span style="color:var(--text-muted)">— &#64;if · insertion/destruction DOM réelle</span>
+        </div>
+        <app-toggle />
+      </div>
+    </div>
+
+  </div><!-- /demo-area -->
+
+  <app-log-panel />
+
+</div><!-- /layout -->
