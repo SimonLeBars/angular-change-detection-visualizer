@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { AnimationConfigService } from './services/animation-config.service';
 import { RenderLogService } from './services/render-log.service';
 import { Counter } from './components/counter/counter';
@@ -17,6 +18,30 @@ import { LogPanel } from './components/log-panel/log-panel';
 export class App {
   config = inject(AnimationConfigService);
   log = inject(RenderLogService);
+  private doc = inject(DOCUMENT);
+
+  theme = signal<'dark' | 'light'>(
+    (localStorage.getItem('domflash-theme') as 'dark' | 'light') ?? 'dark'
+  );
+
+  constructor() {
+    this.applyTheme(this.theme());
+  }
+
+  toggleTheme(): void {
+    const next = this.theme() === 'dark' ? 'light' : 'dark';
+    this.theme.set(next);
+    this.applyTheme(next);
+    localStorage.setItem('domflash-theme', next);
+  }
+
+  private applyTheme(t: 'dark' | 'light'): void {
+    if (t === 'light') {
+      this.doc.documentElement.dataset['theme'] = 'light';
+    } else {
+      delete this.doc.documentElement.dataset['theme'];
+    }
+  }
 
   setDuration(event: Event): void {
     const ms = Number((event.target as HTMLSelectElement).value);

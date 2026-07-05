@@ -14,14 +14,15 @@
   --text-dim: #5a6a80;
   --text-muted: #3a4558;
   --render-flash: #ff3b5c;
+  --render-flash-rgb: 255, 59, 92;
   --render-duration: 1s;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 @keyframes renderFlash {
-  0%   { background-color: var(--render-flash); box-shadow: 0 0 18px rgba(255,59,92,0.6); }
-  30%  { background-color: rgba(255, 59, 92, 0.4); }
+  0%   { background-color: var(--render-flash); box-shadow: 0 0 18px rgba(var(--render-flash-rgb), 0.6); }
+  30%  { background-color: rgba(var(--render-flash-rgb), 0.4); }
   100% { background-color: transparent; box-shadow: none; }
 }
 
@@ -535,3 +536,46 @@ app-counter, app-list, app-form, app-toggle, app-timer, app-log-panel, app-list-
 .timer-divider { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
 .timer-modes { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 8px; }
 .timer-modes .btn { font-size: 0.68rem; padding: 2px 10px; }
+
+// ─── Thème light ─────────────────────────────────────────────────────────────
+[data-theme="light"] {
+  --bg:           #f5f6f8;
+  --surface:      #ffffff;
+  --surface2:     #eef0f4;
+  --border:       #d0d5de;
+  --border-bright:#b0b8c8;
+
+  --cyan:         #007a74;
+  --cyan-dim:     rgba(0, 122, 116, 0.12);
+  --red:          #c0002a;
+  --red-dim:      rgba(192, 0, 42, 0.10);
+  --orange:       #b85a00;
+  --orange-dim:   rgba(184, 90, 0, 0.10);
+  --green:        #1a7a4a;
+
+  --text:         #1a1f2e;
+  --text-dim:     #4a5568;
+  --text-muted:   #8896aa;
+
+  --render-flash:     #c0002a;
+  --render-flash-rgb: 192, 0, 42;
+}
+
+[data-theme="light"] body::before { display: none; }
+
+[data-theme="light"] .logo        { color: var(--text); }
+[data-theme="light"] .count-value { color: var(--text); }
+
+[data-theme="light"] .swatch-white {
+  background: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme="light"] .log-entry {
+  border-bottom-color: var(--border);
+  &:hover { background: rgba(0, 0, 0, 0.03); }
+}
+
+[data-theme="light"] .log-count {
+  border-color: rgba(192, 0, 42, 0.30);
+}

@@ -8,6 +8,9 @@
   <div id="render-counter-header">
     Renders : <b>{{ log.total() }}</b>
   </div>
+  <button class="btn" (click)="toggleTheme()">
+    {{ theme() === 'dark' ? 'Thème clair' : 'Thème sombre' }}
+  </button>
 </header>
 
 <div class="layout">
