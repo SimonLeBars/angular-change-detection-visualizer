@@ -27,7 +27,7 @@ Le projet est utilisé **en projection lors de cours**. Les contraintes sont for
 - **Contraste minimum** : ne jamais utiliser `--text-muted` (`#3a4558`) pour du texte lisible — contraste insuffisant même en conditions normales, inutilisable en projection. Préférer `--text-dim` (`#5a6a80`) au minimum, `--text` (`#c8d6e8`) pour le contenu important.
 - **Taille de police** : 0.8rem minimum pour les hints/légendes, 0.9rem+ pour le contenu principal.
 - **`<code>` dans les hints** : toujours styler avec `background: var(--surface)` + `color: var(--text)` pour que les termes techniques ressortent.
-- **Thème light à implémenter** : les apps nécessitent un thème clair (light mode) pour une meilleure lisibilité en projection. Prévoir via `data-theme="light"` sur `<html>` et redéfinition des variables CSS dans `[data-theme="light"]`. Voir la section "Améliorations prévues".
+- **Thème light** : implémenté via `data-theme="light"` sur `<html>`. Toggle dans le header, persistance `localStorage`. Accents assombris pour WCAG AA sur fond clair.
 
 ## Architecture clé
 
@@ -39,7 +39,7 @@ Le projet est utilisé **en projection lors de cours**. Les contraintes sont for
 
 ## Améliorations prévues
 
-- [ ] **Thème light** pour projection : `[data-theme="light"]` redéfinissant toutes les variables CSS. Toggle accessible depuis l'interface.
+- [x] **Thème light** pour projection : `[data-theme="light"]` redéfinissant toutes les variables CSS. Toggle accessible depuis l'interface.
 - [ ] Déploiement GitHub Pages (ng deploy).
 - [ ] `computed()` signal — dérivation paresseuse.
 - [ ] `takeUntilDestroyed` / `DestroyRef` — demo fuite mémoire.
